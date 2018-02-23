@@ -5,7 +5,7 @@ var router = express.Router();
 router.post('/', function(req, res, next) {
     var post = req.body;
     console.log(post);
-    res.redirect("http://localhost:3000/");
+    res.send("success");
 });
 
 module.exports = router;
