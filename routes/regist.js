@@ -6,18 +6,24 @@ var router = express.Router();
 router.post('/', function(req, res, next) {
     var post = req.body;
 
-    /*
-    if (db.user_count({username: post.username}) > 0) {
-        res.send("exist_username");
-    }
-    else if (db.user_count({email: post.email}) > 0) {
-        res.send("exist_email");
-    }
-    else {
-        console.log(db.user_count({username: post.username}));
-        db.user_save(post);
-        res.send("success");
-    }*/
+    //用promiss实现异步，否则返回的user_count是undefined
+    db.user_count({username: post.username}).then(function (result) {
+        if (result > 0) {
+            res.send('exist_username');
+        }
+        else {
+            db.user_count({email: post.email}).then(function (result) {
+                if (result > 0) {
+                    res.send('exist_email');
+                }
+                else {
+                    db.user_save(post);
+                    res.send('success');
+                }
+            })
+        }
+    });
+    
 });
 
 module.exports = router;
