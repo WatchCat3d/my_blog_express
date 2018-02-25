@@ -2,28 +2,26 @@ var express = require('express');
 var db = require('../model/User_handle');
 var router = express.Router();
 
-/* GET users listing. */
+/* GET home page. */
 router.post('/', function(req, res, next) {
-    var post = req.body;
-
-    //用promiss实现异步，否则返回的user_count是undefined
+  var post = req.body;
+  
     db.user_count({username: post.username}).then(function (result) {
-        if (result > 0) {
-            res.send('exist_username');
+        if (result <= 0) {
+            res.send('wrong_username');
         }
         else {
-            db.user_count({email: post.email}).then(function (result) {
-                if (result > 0) {
-                    res.send('exist_email');
+            db.user_count({username: post.username, password: post.password}).then(function (result) {
+                if (result <= 0) {
+                    res.send('wrong_password');
                 }
                 else {
-                    db.user_save(post);
+                    res.cookie('username', post.username);
                     res.send('success');
                 }
             });
         }
     });
-    
 });
 
 module.exports = router;
