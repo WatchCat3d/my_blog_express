@@ -49,18 +49,20 @@ module.exports = {
             });         
         });
     },
-    user_search: function (pattem) {
-        db_connect();
+    user_search: function (pattem) {  //用promiss实现异步，否则返回的user_count是undefined
+        return new Promise(function (resolve, reject) {
+            db_connect();     
 
-        User.find(pattem, function (err, res) {
-            if (err) {
-                console.log(err);
-                return false;
-            }
-            else {
-                console.log(res);
-                return res;
-            }
+            User.find(pattem, function (err, res) {
+                if (err) {
+                    console.log(err);
+                    return false;
+                }
+                else {
+                    console.log(res);
+                    resolve(res);
+                }
+            }); 
         });
     },
     user_delete: function (pattem) {
