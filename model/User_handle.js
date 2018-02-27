@@ -1,22 +1,10 @@
 var mongoose = require('mongoose');
 var User = require('./User_model');
 
-var url = "mongodb://localhost:27017/users";
-
-function db_connect() {
-    mongoose.connect(url, function (err) {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            console.log("数据库已连接");
-        }
-    });
-}
 
 module.exports = {
     user_save: function (user) {
-        db_connect();
+
 
         new User({
             username: user.username,
@@ -35,7 +23,7 @@ module.exports = {
     },
     user_count: function (pattem) { //用promiss实现异步，否则返回的user_count是undefined
         return new Promise(function (resolve, reject) {
-            db_connect();
+
             
             User.count(pattem, function (err, res) {
                 if (err) {
@@ -51,7 +39,7 @@ module.exports = {
     },
     user_search: function (pattem) {  //用promiss实现异步，否则返回的user_count是undefined
         return new Promise(function (resolve, reject) {
-            db_connect();     
+
 
             User.find(pattem, function (err, res) {
                 if (err) {
@@ -66,7 +54,7 @@ module.exports = {
         });
     },
     user_delete: function (pattem) {
-        db_connect();
+
         User.remove(pattem, function (err, res) {
             if (err) {
                 console.log(err);

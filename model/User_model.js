@@ -7,6 +7,13 @@ var users_schema = mongoose.Schema({
     regist_date: String
 });
 
-var User = mongoose.model('User', users_schema);
+
+
+
+var url = "mongodb://localhost:27017/users";
+
+var connect = mongoose.createConnection(url);
+
+var User = connect.model('User', users_schema);
 
 module.exports = User;

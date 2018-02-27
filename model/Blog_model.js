@@ -7,6 +7,10 @@ var blogs_schema = mongoose.Schema({
     blog_date: String
 });
 
-var Blog = mongoose.model('Blog', blogs_schema);
+var url = "mongodb://localhost:27017/blogs";
+
+var connect = mongoose.createConnection(url);
+
+var Blog = connect.model('Blog', blogs_schema);
 
 module.exports = Blog;
