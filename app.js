@@ -13,6 +13,7 @@ var user_detail = require('./routes/user_detail');
 var write_blog = require('./routes/write_blog');
 var blog_list = require('./routes/blog_list');
 var blog_content = require('./routes/blog_content');
+var write_comments = require('./routes/write_comments');
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use('/user_detail', user_detail);
 app.use('/write_blog', write_blog);
 app.use('/blog_list', blog_list);
 app.use('/blog_content', blog_content);
+app.use('/write_comments', write_comments);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

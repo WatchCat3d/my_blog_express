@@ -43,6 +43,16 @@ module.exports = {
                 console.log(res);
             }
         });
+    },
+    blog_update: function (pattem, post) {
+        Blog.update(pattem, post, function (err, res) {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                console.log(res);
+            }
+        });
     }
 
 };
