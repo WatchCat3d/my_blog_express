@@ -45,13 +45,16 @@ module.exports = {
         });
     },
     blog_update: function (pattem, post) {
-        Blog.update(pattem, post, function (err, res) {
-            if (err) {
-                console.log(err);
-            }
-            else {
-                console.log(res);
-            }
+        return new Promise(function (resolve, reject) {
+            Blog.update(pattem, post, function (err, res) {
+                if (err) {
+                    console.log(err);
+                    return false;
+                }
+                else {
+                    resolve(res);
+                }
+            });
         });
     }
 

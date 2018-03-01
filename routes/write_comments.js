@@ -21,9 +21,10 @@ router.post('/', function(req, res, next) {
         var changes = {
             comments: temp
         };
-        db.blog_update(pattem, changes);
+        db.blog_update(pattem, changes).then(function (result) {
+           res.send(changes); 
+        });
     });
-    res.send('success');
 });
 
 module.exports = router;
