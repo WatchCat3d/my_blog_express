@@ -16,7 +16,9 @@ router.post('/', function(req, res, next) {
                     res.send('wrong_password');
                 }
                 else {
-                    res.cookie('username', post.username);
+                    res.cookie('username', post.username, {
+                        expires: new Date(Date.now() + 900000)
+                    });
                     res.send('success');
                 }
             });
