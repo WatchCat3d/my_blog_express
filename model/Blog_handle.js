@@ -33,6 +33,20 @@ module.exports = {
             });
         });
     },
+    blog_count: function (pattem) {
+        return new Promise(function (resolve, reject) {
+            Blog.count(pattem, function (err, res) {
+                if (err) {
+                    console.log(err);
+                    return false;
+                }
+                else {
+                    console.log(res);
+                    resolve(res);
+                }
+            });
+        });
+    },
     blog_delete: function (pattem) {
 
         Blog.remove(pattem, function (err, res) {
