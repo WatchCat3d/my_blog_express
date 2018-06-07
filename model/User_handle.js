@@ -16,7 +16,7 @@ module.exports = {
                 console.log(err);
             }
             else {
-                console.log(res);
+                console.log(res.length + "个用户已注册");
             }
         });
 
@@ -31,7 +31,7 @@ module.exports = {
                     return false;
                 }
                 else {
-                    console.log(res);
+                    console.log(res + "个用户");
                     resolve(res);
                 }
             });         
@@ -47,7 +47,7 @@ module.exports = {
                     return false;
                 }
                 else {
-                    console.log(res);
+                    console.log(res.length + "个用户已查找到");
                     resolve(res);
                 }
             }); 
@@ -61,7 +61,7 @@ module.exports = {
                 return false;
             }
             else {
-                console.log(res);
+                console.log(res.length + "个用户已删除");
                 return res;
             }
         });

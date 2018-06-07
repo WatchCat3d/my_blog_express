@@ -14,7 +14,7 @@ module.exports = {
                 console.log(err);
             }
             else {
-                console.log(res);
+                console.log(res.length + "个博客已成功保存");
             }
         });
     },
@@ -27,7 +27,7 @@ module.exports = {
                     return false;
                 }
                 else {
-                    console.log(res);
+                    console.log(res.length + "个博客已查找到");
                     resolve(res);
                 }
             });
@@ -41,7 +41,7 @@ module.exports = {
                     return false;
                 }
                 else {
-                    console.log(res);
+                    console.log(res + "个博客");
                     resolve(res);
                 }
             });
@@ -54,7 +54,7 @@ module.exports = {
                 console.log(err);
             }
             else {
-                console.log(res);
+                console.log(res.length + "个博客已删除");
             }
         });
     },
@@ -66,6 +66,7 @@ module.exports = {
                     return false;
                 }
                 else {
+                    console.log(res.length + "个博客已更新");
                     resolve(res);
                 }
             });
