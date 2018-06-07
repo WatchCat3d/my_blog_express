@@ -16,7 +16,7 @@ module.exports = {
                 console.log(err);
             }
             else {
-                console.log(res.length + "个用户已注册");
+                console.log(res);
             }
         });
 

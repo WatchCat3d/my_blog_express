@@ -14,7 +14,7 @@ module.exports = {
                 console.log(err);
             }
             else {
-                console.log(res.length + "个博客已成功保存");
+                console.log(res);
             }
         });
     },

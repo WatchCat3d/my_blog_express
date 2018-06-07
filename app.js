@@ -13,6 +13,7 @@ var user_detail = require('./routes/user_detail');
 var write_blog = require('./routes/write_blog');
 var blog_list = require('./routes/blog_list');
 var blog_content = require('./routes/blog_content');
+var blog_comment = require('./routes/blog_comment');
 var write_comments = require('./routes/write_comments');
 var search_blog = require('./routes/search_blog');
 
@@ -38,6 +39,7 @@ app.use('/user_detail', user_detail);
 app.use('/write_blog', write_blog);
 app.use('/blog_list', blog_list);
 app.use('/blog_content', blog_content);
+app.use('/blog_comment', blog_comment);
 app.use('/write_comments', write_comments);
 app.use('/search_blog', search_blog);
 

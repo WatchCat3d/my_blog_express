@@ -4,12 +4,7 @@ var blogs_schema = mongoose.Schema({
     title: String,
     content: String,
     writer: String,
-    blog_date: String,
-    comments: [{
-        content: String,
-        writer: String,
-        date: String
-    }]
+    blog_date: String
 });
 
 var url = "mongodb://localhost:27017/blogs";
