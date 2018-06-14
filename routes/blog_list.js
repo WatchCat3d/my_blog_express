@@ -6,7 +6,8 @@ var router = express.Router();
 router.post('/', function(req, res, next) {
     var post = req.body;
     var page = post.page;
-    db.blog_search({}).then(function (result) {
+    delete post.page;
+    db.blog_search(post).then(function (result) {
         res.send(result.slice(10 * page, 10 * page + 10));
     });
 });
