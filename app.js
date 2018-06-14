@@ -3,6 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
@@ -16,6 +17,8 @@ var blog_content = require('./routes/blog_content');
 var blog_comment = require('./routes/blog_comment');
 var write_comments = require('./routes/write_comments');
 var search_blog = require('./routes/search_blog');
+var sessionGet = require('./routes/sessionGet');
+var sessionSet = require('./routes/sessionSet');
 
 var app = express();
 
@@ -29,6 +32,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  secret: 'sessionSecret',
+  saveUninitialized: true,
+  resave: true
+}));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/', index);
@@ -42,6 +50,8 @@ app.use('/blog_content', blog_content);
 app.use('/blog_comment', blog_comment);
 app.use('/write_comments', write_comments);
 app.use('/search_blog', search_blog);
+app.use('/sessionGet', sessionGet);
+app.use('/sessionSet', sessionSet);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
