@@ -48,14 +48,15 @@ module.exports = {
         });
     },
     blog_delete: function (pattem) {
-
-        Blog.remove(pattem, function (err, res) {
-            if (err) {
-                console.log(err);
-            }
-            else {
-                console.log(res.length + "个博客已删除");
-            }
+        return new Promise(function (resolve, reject) {
+            Blog.remove(pattem, function (err, res) {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    console.log(res.length + "个博客已删除");
+                }
+            });
         });
     },
     blog_update: function (pattem, post) {

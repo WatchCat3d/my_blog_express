@@ -7,7 +7,6 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 var regist = require('./routes/regist');
 var login = require('./routes/login');
 var user_detail = require('./routes/user_detail');
@@ -19,6 +18,9 @@ var write_comments = require('./routes/write_comments');
 var search_blog = require('./routes/search_blog');
 var sessionGet = require('./routes/sessionGet');
 var sessionSet = require('./routes/sessionSet');
+var manager_add = require('./routes/manager_add');
+var manager_get = require('./routes/manager_get');
+var manager_delete = require('./routes/manager_delete');
 
 var app = express();
 
@@ -40,7 +42,6 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/', index);
-app.use('/users', users);
 app.use('/regist', regist);
 app.use('/login', login);
 app.use('/user_detail', user_detail);
@@ -52,6 +53,9 @@ app.use('/write_comments', write_comments);
 app.use('/search_blog', search_blog);
 app.use('/sessionGet', sessionGet);
 app.use('/sessionSet', sessionSet);
+app.use('/manager_add', manager_add);
+app.use('/manager_get', manager_get);
+app.use('/manager_delete', manager_delete);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

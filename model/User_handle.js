@@ -54,16 +54,17 @@ module.exports = {
         });
     },
     user_delete: function (pattem) {
-
-        User.remove(pattem, function (err, res) {
-            if (err) {
-                console.log(err);
-                return false;
-            }
-            else {
-                console.log(res.length + "个用户已删除");
-                return res;
-            }
+        return new Promise(function (resolve, reject) {
+            User.remove(pattem, function (err, res) {
+                if (err) {
+                    console.log(err);
+                    return false;
+                }
+                else {
+                    console.log(res.length + "个用户已删除");
+                    resolve(res);
+                }
+            });
         });
     }
 };

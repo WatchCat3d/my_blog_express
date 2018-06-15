@@ -19,7 +19,7 @@ module.exports = {
                     resolve(res);
                 }
             });
-        })
+        });
     },
     blogComment_search: function (pattem) {
         return new Promise(function (resolve, reject) {
@@ -51,14 +51,15 @@ module.exports = {
         });
     },
     blogComment_delete: function (pattem) {
-
-        BlogComment.remove(pattem, function (err, res) {
-            if (err) {
-                console.log(err);
-            }
-            else {
-                console.log(res.length + "个评论已删除");
-            }
+        return new Promise(function (resolve, reject) {
+            BlogComment.remove(pattem, function (err, res) {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    console.log(res.length + "个评论已删除");
+                }
+            });
         });
     },
     blogComment_update: function (pattem, post) {
