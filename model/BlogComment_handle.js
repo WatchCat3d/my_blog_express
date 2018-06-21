@@ -55,9 +55,11 @@ module.exports = {
             BlogComment.remove(pattem, function (err, res) {
                 if (err) {
                     console.log(err);
+                    return false;
                 }
                 else {
                     console.log(res.length + "个评论已删除");
+                    resolve(res);
                 }
             });
         });

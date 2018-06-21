@@ -12,14 +12,4 @@ router.post('/', function(req, res, next) {
     });
 });
 
-router.get('/', function(req, res, next) {
-    var post = req.body;
-    db.blog_count(post).then(function (result) {
-        res.send({
-            page: result
-        });
-    });
-
-});
-
 module.exports = router;

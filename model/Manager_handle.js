@@ -62,7 +62,7 @@ module.exports = {
                     return false;
                 }
                 else {
-                    console.log(res.length + "个用户已删除");
+                    console.log(res.length + "个管理员已删除");
                     resolve(res);
                 }
             });

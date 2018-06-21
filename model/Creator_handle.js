@@ -61,7 +61,7 @@ module.exports = {
                     return false;
                 }
                 else {
-                    console.log(res.length + "个用户已删除");
+                    console.log(res.length + "个群主已删除");
                     resolve(res);
                 }
             });
