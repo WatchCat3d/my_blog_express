@@ -3,19 +3,21 @@ var Draft = require('./Draft_model');//19
 
 module.exports = {
     draft_save: function (draft) {
-
-        new Draft({
-            title: draft.title,
-            content: draft.content,
-            writer: draft.writer,
-            draft_date: draft.draft_date
-        }).save(function (err, res) {
-            if (err) {
-                console.log(err);
-            }
-            else {
-                console.log(res);
-            }
+        return new Promise(function (resolve, reject) {
+            new Draft({
+                title: draft.title,
+                content: draft.content,
+                writer: draft.writer,
+                draft_date: draft.draft_date
+            }).save(function (err, res) {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    console.log(res);
+                    resolve(res);
+                }
+            });
         });
     },
     draft_search: function (pattem) {
@@ -55,7 +57,7 @@ module.exports = {
                     return false;
                 }
                 else {
-                    console.log(res.length + "个草稿已删除");
+                    console.log("1个草稿已删除");
                     resolve(res);
                 }
             });

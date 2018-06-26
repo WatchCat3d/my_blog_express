@@ -3,19 +3,21 @@ var Blog = require('./Blog_model');
 
 module.exports = {
     blog_save: function (blog) {
-
-        new Blog({
-            title: blog.title,
-            content: blog.content,
-            writer: blog.writer,
-            blog_date: blog.blog_date
-        }).save(function (err, res) {
-            if (err) {
-                console.log(err);
-            }
-            else {
-                console.log(res);
-            }
+        return new Promise(function (resolve, reject) {
+            new Blog({
+                title: blog.title,
+                content: blog.content,
+                writer: blog.writer,
+                blog_date: blog.blog_date
+            }).save(function (err, res) {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    console.log(res);
+                    resolve(res);
+                }
+            });
         });
     },
     blog_search: function (pattem) {
@@ -55,7 +57,7 @@ module.exports = {
                     return false;
                 }
                 else {
-                    console.log(res.length + "个博客已删除");
+                    console.log("1个博客已删除");
                     resolve(res);
                 }
             });

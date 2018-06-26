@@ -58,7 +58,7 @@ module.exports = {
                     return false;
                 }
                 else {
-                    console.log(res.length + "个评论已删除");
+                    console.log("1个评论已删除");
                     resolve(res);
                 }
             });

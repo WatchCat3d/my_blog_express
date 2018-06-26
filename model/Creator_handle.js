@@ -4,22 +4,23 @@ var Creator = require('./Creator_model');
 
 module.exports = {
     creator_save: function (creator) {
+        return new Promise(function (resolve, reject) {
 
-
-        new Creator({
-            username: creator.username,
-            password: creator.password,
-            email: creator.email,
-            regist_date: creator.regist_date
-        }).save(function (err, res) {
-            if (err) {
-                console.log(err);
-            }
-            else {
-                console.log(res);
-            }
+            new Creator({
+                username: creator.username,
+                password: creator.password,
+                email: creator.email,
+                regist_date: creator.regist_date
+            }).save(function (err, res) {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    console.log(res);
+                    resolve(res);
+                }
+            });
         });
-
     },
     creator_count: function (pattem) { //用promiss实现异步，否则返回的creator_count是undefined
         return new Promise(function (resolve, reject) {
@@ -61,7 +62,7 @@ module.exports = {
                     return false;
                 }
                 else {
-                    console.log(res.length + "个群主已删除");
+                    console.log("1个群主已删除");
                     resolve(res);
                 }
             });

@@ -5,19 +5,21 @@ var Manager = require('./Manager_model');
 module.exports = {
     manager_save: function (manager) {
 
-
-        new Manager({
-            username: manager.username,
-            password: manager.password,
-            email: manager.email,
-            regist_date: manager.regist_date
-        }).save(function (err, res) {
-            if (err) {
-                console.log(err);
-            }
-            else {
-                console.log(res);
-            }
+        return new Promise(function (resolve, reject) {
+            new Manager({
+                username: manager.username,
+                password: manager.password,
+                email: manager.email,
+                regist_date: manager.regist_date
+            }).save(function (err, res) {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    console.log(res);
+                    resolve(res);
+                }
+            });
         });
 
     },
@@ -62,7 +64,7 @@ module.exports = {
                     return false;
                 }
                 else {
-                    console.log(res.length + "个管理员已删除");
+                    console.log("1个管理员已删除");
                     resolve(res);
                 }
             });
