@@ -34,6 +34,7 @@ var sessionSet = require('./routes/sessionSet');
 var manager_add = require('./routes/manager_add');
 var manager_get = require('./routes/manager_get');
 var manager_delete = require('./routes/manager_delete');
+var manager_count = require('./routes/manager_count');
 var creator_add = require('./routes/creator_add');
 var creator_get = require('./routes/creator_get');
 
@@ -84,6 +85,7 @@ app.use('/sessionSet', sessionSet);
 app.use('/manager_add', manager_add);
 app.use('/manager_get', manager_get);
 app.use('/manager_delete', manager_delete);
+app.use('/manager_count', manager_count);
 app.use('/creator_add', creator_add);
 app.use('/creator_get', creator_get);
 
